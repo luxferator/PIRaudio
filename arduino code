@@ -29,3 +29,4 @@ if(pirval == HIGH){
     }
    delay(30000);  //this delay is to avoid reading of the pir sensor while file is in play
 }
+
