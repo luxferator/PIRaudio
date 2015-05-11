@@ -1,0 +1,31 @@
+/*
+ This sketch play an audio file when a PIR sensor detect a movement
+ Need SD card properly connected with audio files in root folder.
+ Connect PIR on digital input 3
+ Audio out on 9/10 @ Normal-Arduinos, pin 44/45 @ Mega-Arduinos 
+ */
+#include <SimpleSDAudio.h>
+
+int pirPin = 7;
+int pirState = LOW;
+int pirval = 0;
+
+void setup(){ 
+  //pinMode(led, OUTPUT);
+  pinMode(pirPin, INPUT);
+  SdPlay.setSDCSPin(8); // Enable if your SD card CS-Pin is not at Pin 4... 
+  SdPlay.init(SSDA_MODE_FULLRATE | SSDA_MODE_STEREO | SSDA_MODE_AUTOWORKER);
+SdPlay.setFile("1.bfm"); //set the file you want to play, you could also insert this in loop section if you have more then one file to play
+delay(5000);  //inserted a delay to give some time to the sensor for setting up
+}
+
+void loop() {
+int pirval = digitalRead(pirPin);
+if(pirval == HIGH){
+  SdPlay.play();
+  //digitalWrite(led, LOW); //accendi il led
+  if(pirState == LOW){
+    pirState == HIGH;
+    }
+   delay(30000);  //this delay is to avoid reading of the pir sensor while file is in play
+}
