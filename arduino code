@@ -20,10 +20,9 @@ delay(5000);  //inserted a delay to give some time to the sensor for setting up
 }
 
 void loop() {
-int pirval = digitalRead(pirPin);
+int pirval = digitalRead(pirPin); //read the sensor and store the state on pirval
 if(pirval == HIGH){
   SdPlay.play();
-  //digitalWrite(led, LOW); //accendi il led
   if(pirState == LOW){
     pirState == HIGH;
     }
